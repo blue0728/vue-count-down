@@ -7,25 +7,25 @@
 				if (typeof value !== 'string') {
 					return console.error('The param of directive "v-time-down" must be a string!');
 				}
-				let newValue = value.replace(/-/g, "/").substring(0, 19);
+				var newValue = value.replace(/-/g, "/").substring(0, 19);
 				if (new Date(newValue) == 'Invalid Date') {
 					return console.error('The param of directive "v-time-down" must be a date string!');
 				}
-				let timerSS = null,
+				var timerSS = null,
 					timerMS = null;
-				let el = this.el;
-				let hDom = document.createElement('span');
-				let mDom = document.createElement('span');
-				let hasHour = false;
+				var el = this.el;
+				var hDom = document.createElement('span');
+				var mDom = document.createElement('span');
+				var hasHour = false;
 				hDom.setAttribute('class', 'timeDown-H');
 				mDom.setAttribute('class', 'timeDown-M');
 				el.appendChild(hDom);
 				el.appendChild(mDom);
-				let ms = 10;
+				var ms = 10;
 				downSS();
 
 				function downSS() {
-					let last = (new Date(newValue)).getTime() - (new Date()).getTime();
+					var last = (new Date(newValue)).getTime() - (new Date()).getTime();
 					last = last / 1000;
 					if (last <= 0) {
 						clearInterval(timerSS);
@@ -36,14 +36,14 @@
 				timerSS = setInterval(downSS, 1000);
 
 				function format(value) {
-					let result = '00:00:00';
+					var result = '00:00:00';
 					if (value == 0) {
 						hasHour = true;
 						return result
 					}
-					let h = parseInt(value / 3600);
-					let m = parseInt((value - h * 3600) / 60);
-					let s = parseInt(value - h * 3600 - m * 60);
+					var h = parseInt(value / 3600);
+					var m = parseInt((value - h * 3600) / 60);
+					var s = parseInt(value - h * 3600 - m * 60);
 					h = h < 10 ? '0' + h : h;
 					m = m < 10 ? '0' + m : m;
 					s = s < 10 ? '0' + s : s;
