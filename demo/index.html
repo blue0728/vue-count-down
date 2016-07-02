@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<title>Hello Vue-count-down</title>
+</head>
+<body>
+<style>
+*{margin:0;padding:0;}	
+a{margin: 30px auto;display: block;text-align: center;}
+p{padding-left: 20px;}
+[v-cloak] {
+    display: none;
+}
+</style>
+<div id="app">
+	<p>倒计时<span v-count-down="'2016-07-02 15:08:00.000'"></span></p>
+</div>
+<script src="http://cdn.bootcss.com/vue/1.0.25/vue.min.js"></script>
+<script src="../dist/vue-count-down.js"></script>
+<script>
+new Vue({
+	el: '#app',
+})	
+</script>
+</body>
+</html>
