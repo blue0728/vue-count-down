@@ -36,8 +36,9 @@
 				timerSS = setInterval(downSS, 1000);
 
 				function format(value) {
-					let result = null;
+					let result = '00:00:00';
 					if (value == 0) {
+						hasHour = true;
 						return result
 					}
 					let h = parseInt(value / 3600);
@@ -53,6 +54,7 @@
 						hasHour = true;
 						result = h + ':' + m + ':' + s;
 					}
+
 					return result
 				}
 
@@ -71,9 +73,9 @@
 			}
 		});
 	};
-	if (typeof exports == "object") {
+	if (typeof exports === "object") {
 		module.exports = vueCountDown;
-	} else if (typeof define == "function" && define.amd) {
+	} else if (typeof define === "function" && define.amd) {
 		define([], function() {
 			return vueCountDown
 		})

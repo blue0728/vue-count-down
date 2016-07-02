@@ -12,7 +12,6 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, 'dist'),
 		publicPath: '/',
-		library: 'vueCountDown',
 		filename: "[name].js"
 	},
 	module: {
