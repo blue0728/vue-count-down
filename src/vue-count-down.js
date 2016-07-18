@@ -16,16 +16,16 @@
 				var el = this.el;
 				var hDom = document.createElement('span');
 				var mDom = document.createElement('span');
-				//var hasHour = false;
 				hDom.setAttribute('class', 'timeDown-H');
 				mDom.setAttribute('class', 'timeDown-M');
 				el.appendChild(hDom);
 				el.appendChild(mDom);
 				var ms = 10;
+				var last = 0;
 				downSS();
 
 				function downSS() {
-					var last = (new Date(newValue)).getTime() - (new Date()).getTime();
+					last = (new Date(newValue)).getTime() - (new Date()).getTime();
 					last = last / 1000;
 					if (last <= 0) {
 						clearInterval(timerSS);
@@ -40,10 +40,6 @@
 					if (value == 0) {
 						clearInterval(timerMS);
 						el.querySelector('.timeDown-M').innerHTML = '';
-						//hasHour = true;
-						setTimeout(function() {
-							location.href = location.href;
-						}, 1000)
 						return result
 					}
 					var h = parseInt(value / 3600);
@@ -53,10 +49,8 @@
 					m = m < 10 ? '0' + m : m;
 					s = s < 10 ? '0' + s : s;
 					if (h == 0) {
-						//hasHour = false;
 						result = m + ':' + s;
 					} else {
-						//hasHour = true;
 						result = h + ':' + m + ':' + s;
 					}
 					return result
@@ -69,11 +63,11 @@
 						ms = 10;
 					}
 					ms = ms < 10 ? '0' + ms : ms;
-					//if (!hasHour) {
 					el.querySelector('.timeDown-M').innerHTML = '.' + ms;
-					//}
 				}
-				timerMS = setInterval(downMS, 100);
+				if (last != 0) {
+					timerMS = setInterval(downMS, 100);
+				}
 			}
 		});
 	};
