@@ -16,7 +16,7 @@
 				var el = this.el;
 				var hDom = document.createElement('span');
 				var mDom = document.createElement('span');
-				var hasHour = false;
+				//var hasHour = false;
 				hDom.setAttribute('class', 'timeDown-H');
 				mDom.setAttribute('class', 'timeDown-M');
 				el.appendChild(hDom);
@@ -38,7 +38,12 @@
 				function format(value) {
 					var result = '00:00:00';
 					if (value == 0) {
-						hasHour = true;
+						clearInterval(timerMS);
+						el.querySelector('.timeDown-M').innerHTML = '';
+						//hasHour = true;
+						setTimeout(function() {
+							location.href = location.href;
+						}, 1000)
 						return result
 					}
 					var h = parseInt(value / 3600);
@@ -48,13 +53,12 @@
 					m = m < 10 ? '0' + m : m;
 					s = s < 10 ? '0' + s : s;
 					if (h == 0) {
-						hasHour = false;
+						//hasHour = false;
 						result = m + ':' + s;
 					} else {
-						hasHour = true;
+						//hasHour = true;
 						result = h + ':' + m + ':' + s;
 					}
-
 					return result
 				}
 
@@ -65,9 +69,9 @@
 						ms = 10;
 					}
 					ms = ms < 10 ? '0' + ms : ms;
-					if (!hasHour) {
-						el.querySelector('.timeDown-M').innerHTML = ':' + ms;
-					}
+					//if (!hasHour) {
+					el.querySelector('.timeDown-M').innerHTML = '.' + ms;
+					//}
 				}
 				timerMS = setInterval(downMS, 100);
 			}
