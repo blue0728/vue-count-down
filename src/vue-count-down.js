@@ -41,6 +41,9 @@
 					if (value == 0) {
 						clearInterval(timerMS);
 						el.querySelector('.timeDown-M').innerHTML = '';
+						setTimeout(function() {
+							location.href = location.href;
+						}, 1000)
 						return result
 					}
 					var h = parseInt(value / 3600);
@@ -49,7 +52,11 @@
 					h = h < 10 ? '0' + h : h;
 					m = m < 10 ? '0' + m : m;
 					s = s < 10 ? '0' + s : s;
-					result = h + ':' + m + ':' + s;
+					if (h == 0) {
+						result = m + ':' + s;
+					} else {
+						result = h + ':' + m + ':' + s;
+					}
 					return result
 				}
 
