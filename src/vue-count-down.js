@@ -3,6 +3,7 @@
 	var vueCountDown = {};
 	vueCountDown.install = function(Vue) {
 		Vue.directive('countDown', {
+			twoWay: true,
 			update: function(value) {
 				if (typeof value !== 'string') {
 					return console.error('The param of directive "v-time-down" must be a string!');
